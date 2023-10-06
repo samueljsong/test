@@ -2,21 +2,18 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {Routes, Route} from "react-router-dom"
+import { Login } from './pages/Login'
+import { Landing } from './pages/Landing'
 
 function App() {
 
-  const [message, setMessage] = useState('nothing');
-
-  useEffect(() => {
-    fetch('https://comp4921test.netlify.app/.netlify/functions/api')
-      .then(data => data.json())
-      .then(json => setMessage(json.hello))
-  }, [])
-
   return (
     <>
-      <h1>MESSAGE</h1>
-      {message}
+      <Routes>
+        <Route path='/' element={<Login/>}/>
+        <Route path='/landing' element={<Landing/>}/>
+      </Routes>
     </>
   )
 }
