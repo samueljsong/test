@@ -9,24 +9,12 @@ export const Login = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     async function onClickHandler(){
-        try{
-            fetch('https://testapi-7mzl.onrender.com/loginUser',{
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: {
-                    username: "testing",
-                    password: "123"
-                }
-            })
-                .then(res => res.json())
-                .then(json => {
-                    if(json.loginSuccess){
-                        navigateTo('/landing');
-                    }
-                })
-        }catch(e){
-            console.log("login bugged");
-        }
+        fetch('https://testapi-7mzl.onrender.com/', {
+            mode: 'cors',
+            method: 'GET'
+        })
+            .then(res => res.json())
+            .then(json => console.log(json))
     }
 
     return(
