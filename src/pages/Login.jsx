@@ -10,12 +10,13 @@ export const Login = () => {
 
     async function onClickHandler(){
         try{
-            fetch('http://owfsbrlpdm.us19.qoddiapp.com/loginUser',{
+            fetch('https://testapi-7mzl.onrender.com/loginUser',{
                 method: 'POST',
-                body: ({
+                headers: {'Content-Type':'application/json'},
+                body: {
                     username: "testing",
                     password: "123"
-                })
+                }
             })
                 .then(res => res.json())
                 .then(json => {
@@ -24,7 +25,7 @@ export const Login = () => {
                     }
                 })
         }catch(e){
-            console.log(e);
+            console.log("login bugged");
         }
     }
 
