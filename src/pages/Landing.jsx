@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export const Landing = ({cookies}) => {
 
     async function onButtonClickHandler(){
-        fetch('http://localhost:8000/landing', {
+        fetch('https://testapi-7mzl.onrender.com/landing', {
             mode: 'cors',
             method: "POST",
             body: JSON.stringify({sessionID: cookie}),
