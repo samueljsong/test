@@ -2,19 +2,33 @@
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css'
 import { useState } from 'react';
+import axios from 'axios';
 
 
-export const Login = () => {
+export const Login = ({cookies}) => {
+    axios.defaults.withCredentials = true;
     const navigateTo = useNavigate();
     const [loggedIn, setLoggedIn] = useState(false);
 
     async function onClickHandler(){
-        fetch('https://testapi-7mzl.onrender.com/', {
+        let username = "testing"
+        let password = "123"
+
+        fetch('http://localhost:8000/loginUser', {
             mode: 'cors',
-            method: 'GET'
+            method: 'POST',
+            body: JSON.stringify({username, password}),
+            headers:{
+                'Content-Type' : 'application/json'
+            },
         })
             .then(res => res.json())
-            .then(json => console.log(json))
+            .then(json => {
+                if (json.loginSuccess){
+                    cookies.set('session', json.sessionID)
+                    navigateTo("/landing");
+                }
+            })
     }
 
     return(
