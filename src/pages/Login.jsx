@@ -14,7 +14,7 @@ export const Login = ({cookies}) => {
         let username = "testing"
         let password = "123"
 
-        fetch('https://testapi-7mzl.onrender.com/loginUser', {
+        fetch('https://jolly-clam-tuxedo.cyclic.app/loginUser', {
             mode: 'cors',
             method: 'POST',
             body: JSON.stringify({username, password}),
